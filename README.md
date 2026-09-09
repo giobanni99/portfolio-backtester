@@ -1,0 +1,1 @@
+This is a portfolio backtester that takes in a company's stock and calculates whether you should buy, sell, or hold shares based off of 50-day and 200-day averages and checks if the 50-day average is higher or lower than the 200-day average.
