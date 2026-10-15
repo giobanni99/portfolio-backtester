@@ -1,4 +1,5 @@
 from backtester.data import get_close_prices
+from backtester.metrics import total_return, max_drawdown
 from backtester.portfolio import Portfolio
 import pandas as pd
 prices = get_close_prices("AAPL", start="2020-01-01", end="2024-12-31")
@@ -15,3 +16,9 @@ else:
 
 total_series = pd.Series(p.history, index=prices.index)
 print(f"${total_series.iloc[-1]:,.2f}")
+
+total_return_value = total_return(total_series)
+print(f"Total Return: {total_return_value:.2f}%")
+
+max_drawdown_value = max_drawdown(total_series)
+print(f"Maximum Drawdown: {max_drawdown_value:.2f}%")
