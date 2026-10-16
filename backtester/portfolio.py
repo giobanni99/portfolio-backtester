@@ -13,3 +13,8 @@ class Portfolio:
 
     def get_history(self):
         return self.history
+
+    def sell(self, price):
+        self.cash = self.cash + self.shares * price
+        self.shares = 0
+
