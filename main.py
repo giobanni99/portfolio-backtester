@@ -4,6 +4,7 @@ from backtester.metrics import sharpe_ratio, total_return, max_drawdown
 from backtester.strategy import crossover_strategy
 from backtester.portfolio import Portfolio
 import pandas as pd
+import matplotlib.pyplot as plt
 prices = get_close_prices("AAPL", start="2020-01-01", end="2024-12-31")
 STARTING_CASH = 10000
 
@@ -25,3 +26,12 @@ print(f"  Final value: ${xo_curve.iloc[-1]:,.2f}")
 print(f"  Total return: {total_return(xo_curve):.2f}%") 
 print(f"  Max drawdown: {max_drawdown(xo_curve):.2f}%")
 print(f"  Sharpe ratio: {sharpe_ratio(xo_curve):.2f}")
+
+
+bh_curve.plot(label="Buy & Hold")
+xo_curve.plot(label="50/200 Crossover")
+plt.title("AAPL Strategy Comparison, 2020-2024")
+plt.ylabel("Portfolio Value ($)")
+plt.legend()
+plt.savefig("equity_curves.png")
+plt.show()
